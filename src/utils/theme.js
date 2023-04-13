@@ -5,6 +5,8 @@ const theme = {
     delete: '#f9abab',
     add: '#b6f9c9',
     warning: '#f3c8c2',
+    black: '#000',
+    hover: '#f0d462',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 252],
   fonts: {
