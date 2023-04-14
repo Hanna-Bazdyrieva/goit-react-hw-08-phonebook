@@ -1,18 +1,15 @@
-import {
-  addContactApi,
-  getContactsApi,
-  removeContactApi,
-} from 'services/mockAPI';
+
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { addContactApi, getContactsApi, removeContactApi } from 'services/herokuAPI';
 
 export const getContacts = createAsyncThunk(
   'contacts/fetchAll',
-  async (_, thunkAPI) => {
+  async (_, {rejectWithValue}) => {
     try {
       const contacts = await getContactsApi();
       return contacts;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   },
   {
@@ -27,12 +24,12 @@ export const getContacts = createAsyncThunk(
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async (newContact, thunkAPI) => {
+  async (newContact, {rejectWithValue}) => {
     try {
       const contact = await addContactApi(newContact);
       return contact;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return rejectWithValue(error.message);
     }
   }
 );

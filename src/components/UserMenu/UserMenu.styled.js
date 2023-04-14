@@ -1,17 +1,28 @@
 import styled from 'styled-components';
 
 export const Email = styled.p`
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes.m};
+  margin: 0;
+  padding: ${p => p.theme.space[1]}px ${p => p.theme.space[3]}px;
+  /* background-color: ${p => p.theme.colors.lightOrange}; */
+  border-radius: ${p => p.theme.radii.normal};
+`;
+export const Welcome = styled(Email)`
   font-weight: ${p => p.theme.fontWeights.bold};
   font-size: ${p => p.theme.fontSizes.m};
   margin: 0;
-  padding: ${p => p.theme.space[2]}px ${p => p.theme.space[5]}px;
-  background-color: ${p => p.theme.colors.lightOrange};
+  padding: ${p => p.theme.space[2]}px ${p => p.theme.space[3]}px;
+  /* background-color: ${p => p.theme.colors.lightOrange}; */
   border-radius: ${p => p.theme.radii.normal};
 `;
 
 export const Button = styled.button`
-   padding: ${p => p.theme.space[3]}px;
+margin-left: ${p => p.theme.space[2]}px;
+  padding: ${p => p.theme.space[1]}px ${p => p.theme.space[3]}px;
   width: ${p => p.theme.sizes[0]}px;
+  height: 40px;
+
 
   font-size: ${p => p.theme.fontSizes.m};
   font-weight: ${p => p.theme.fontWeights.bold};

@@ -1,21 +1,26 @@
-import { Box } from "components/Box/Box"
-import { Button, Email } from "./UserMenu.styled"
+import { Box } from 'components/Box/Box';
+import { Button, Email, Welcome } from './UserMenu.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutUser } from 'redux/auth/authOperations';
+import { selectorUserEmail } from 'redux/auth/authSelector';
 
-export const UserMenu = ({email}) => {
+export const UserMenu = () => {
+  const email = useSelector(selectorUserEmail)
+  const dispatch = useDispatch()
   return (
     <Box
-    display="flex"
-    // flexDirection="column"
-    alignItems="space-between"
-    mx="auto"
-    my={4}
-    px={2}
-    py={4}
-    bg="list"
-    borderRadius="20px"
-  >
-    <Email>anna.bazdyreva@gmail.com</Email>
-    <Button>Logout</Button>
+      display="flex"
+      alignItems="center"
+    >
+      <Box
+        display="flex"
+        flexDirection="column"
+        px={3}
+      >
+        <Welcome>Welcome</Welcome>
+        <Email>{email}</Email>
+      </Box>
+      <Button type='button' onClick = {()=>dispatch(logoutUser())}>Logout</Button>
     </Box>
-  )
-}
+  );
+};

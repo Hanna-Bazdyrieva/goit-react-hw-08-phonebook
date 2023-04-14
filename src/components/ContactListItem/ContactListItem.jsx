@@ -7,7 +7,7 @@ import {
 import { BsPersonCircle } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeContact } from 'redux/contactsOperations';
+import { removeContact } from 'redux/contacts/contactsOperations';
 
 const ContactListItem = ({ id, name, number }) => {
   const dispatch = useDispatch();

@@ -1,10 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { loginUserApi, logoutUserApi, refreshtUserApi, registerUserApi } from "services/herokuAPI";
 
 export const registerUser = createAsyncThunk(
     'auth/register',
     async (creds, {rejectWithValue} ) =>{
         try {
             const data = await registerUserApi(creds)
+            console.log(data)
         return data
         } catch (error) 
          {return rejectWithValue(error.message)
@@ -13,31 +15,49 @@ export const registerUser = createAsyncThunk(
     }
 )
 
+export const loginUser = createAsyncThunk(
+    'auth/login',
+    async (creds, {rejectWithValue} ) =>{
+        try {
+            const data = await loginUserApi(creds)
+            console.log(data)
+        return data
+        } catch (error) 
+         {return rejectWithValue(error.message)
+            
+        }
+    }
+)
 
-// export const registerUser = createAsyncThunk(
-//     "auth/register",
-//     async (userCreds, { rejectWithValue }) => {
-//       try {
-//         const userData = await registerUserApi(userCreds);
-//         return userData;
-//       } catch (error) {
-//         return rejectWithValue(error.message);
-//       }
-//     }
-//   );
-  
-//   export const loginUser = createAsyncThunk(
-//     "auth/login",
-//     async (userCreds, { rejectWithValue }) => {
-//       try {
-//         const userData = await loginUserApi(userCreds);
-//         return userData;
-//       } catch (error) {
-//         return rejectWithValue(error.message);
-//       }
-//     }
-//   );
-  
+export const logoutUser = createAsyncThunk(
+    'auth/logout',
+    async (_, {rejectWithValue} ) =>{
+        try {
+           await logoutUserApi()
+         } catch (error) 
+         {return rejectWithValue(error.message)
+            
+        }
+    }
+)
+
+export const refreshUser = createAsyncThunk(
+    'auth/refresh',
+    async (_, {getState, rejectWithValue} ) =>{
+const token = getState().auth.token
+if (!token) return rejectWithValue()
+
+        try {
+          const data = await refreshtUserApi(token)
+          return data
+         } catch (error) 
+         {return rejectWithValue(error.message)
+            
+        }
+    }
+)
+
+
 //   export const getUserData = createAsyncThunk(
 //     "auth/getUserData",
 //     async (_, { rejectWithValue, getState }) => {

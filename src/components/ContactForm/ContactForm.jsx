@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { InputLabel, AddBtn, Input } from './ContactForm.styled';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsOperations';
+import { addContact } from 'redux/contacts/contactsOperations';
 import { selectContacts } from 'redux/selectors';
 
 const ContactForm = () => {
