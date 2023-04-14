@@ -1,13 +1,15 @@
 import { Box } from 'components/Box/Box';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Outlet } from 'react-router-dom';
+import {
+  //  useDispatch,
+    useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 import { selectorIsAuth } from 'redux/auth/authSelector';
 import {
   RiContactsBookFill,
   RiLoginBoxFill,
   RiLoginBoxLine,
 } from 'react-icons/ri';
-import { Container, Header, Link } from './Navigation.styled';
+import { Header, Link } from './Navigation.styled';
 import { Suspense } from 'react';
 import Loader from 'components/Loader/Loader';
 import { IconContext } from 'react-icons';
@@ -15,7 +17,7 @@ import { UserMenu } from 'components/UserMenu/UserMenu';
 import Section from 'components/Section/Section';
 
 export const Navigation = params => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const isAuth = useSelector(selectorIsAuth);
   return (
     <Section>

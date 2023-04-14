@@ -5,7 +5,6 @@ export const Email = styled.p`
   font-size: ${p => p.theme.fontSizes.m};
   margin: 0;
   padding: ${p => p.theme.space[1]}px ${p => p.theme.space[3]}px;
-  /* background-color: ${p => p.theme.colors.lightOrange}; */
   border-radius: ${p => p.theme.radii.normal};
 `;
 export const Welcome = styled(Email)`
@@ -13,7 +12,6 @@ export const Welcome = styled(Email)`
   font-size: ${p => p.theme.fontSizes.m};
   margin: 0;
   padding: ${p => p.theme.space[2]}px ${p => p.theme.space[3]}px;
-  /* background-color: ${p => p.theme.colors.lightOrange}; */
   border-radius: ${p => p.theme.radii.normal};
 `;
 

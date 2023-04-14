@@ -2,10 +2,6 @@ import { useState, memo } from 'react';
 import { Box } from 'components/Box/Box';
 import { InputLabel, AddBtn, Input } from '../ContactForm/ContactForm.styled';
 import { useDispatch } from 'react-redux';
-// import { loginUserApi } from "services/firebaseApi";
-// import { useDispatch, useSelector } from 'react-redux';
-// import { addContact } from 'redux/contactsOperations';
-// import { selectContacts } from 'redux/selectors';
 
 const UserForm = ({onSubmit, btnSubmit}) => {
 const initialForm = {

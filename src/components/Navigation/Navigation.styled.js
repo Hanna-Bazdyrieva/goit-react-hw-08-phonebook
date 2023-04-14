@@ -22,15 +22,6 @@ export const Header = styled.header`
   }
 `;
 
-// export const Logo = styled.p`
-//   font-weight: ${p => p.theme.fontWeights.bold};
-//   font-size: ${p => p.theme.fontSizes.ml};
-//   margin: 0;
-//   padding: ${p => p.theme.space[2]}px ${p => p.theme.space[5]}px;
-//   background-color: ${p => p.theme.colors.lightOrange};
-//   border-radius: ${p => p.theme.radii.normal};
-// `;
-
 export const Link = styled(NavLink)`
   padding: ${p => p.theme.space[3]}px ${p => p.theme.space[5]}px;
   border-radius: ${p => p.theme.radii.normal};
