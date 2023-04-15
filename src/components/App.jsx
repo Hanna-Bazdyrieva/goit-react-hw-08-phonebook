@@ -1,28 +1,41 @@
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch} from 'react-redux';
-import { Navigation } from './Navigation/Navigation';
+import { useDispatch } from 'react-redux';
 import { RegisterPage } from 'pages/RegisterPage';
 import { LoginPage } from 'pages/LoginPage';
 import { PhonebookPage } from 'pages/PhonebookPage';
 import { refreshUser } from 'redux/auth/authOperations';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import PublicRoute from './PublicRoute/PublicRoute';
+import { HomePage } from 'pages/HomePage';
+import Layout from 'components/Layout/Layout';
 
 const App = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(refreshUser())
-    }, [dispatch]);
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <Routes>
-      <Route path="/" element={<Navigation />}>
-       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/phonebook" element={<PhonebookPage />} />
-      {/* <Route index element={<Home />} />
-      <Route path="/movies" element={<Movies />} />
-      <Route path="*" element={<Home />} /> */}
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={<PublicRoute component={<RegisterPage />} />}
+        />
+        <Route
+          path="/login"
+          element={<PublicRoute component={<LoginPage />} />}
+        />
+        <Route
+          path="/phonebook"
+          element={
+            <PrivateRoute redirectTo="/" component={<PhonebookPage />} />
+          }
+        />
+        <Route path="*" element={<Layout />} />
       </Route>
     </Routes>
   );

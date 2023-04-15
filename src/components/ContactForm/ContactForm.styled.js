@@ -15,7 +15,7 @@ export const Input = styled.input`
   text-align: center;
   font-size: ${p => p.theme.fontSizes.m};
   font-weight: ${p => p.theme.fontWeights.normal};
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   line-height: 30px;
   border-radius: ${p => p.theme.radii.normal};
   border: 1px solid rgb(89 81 81);

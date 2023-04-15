@@ -12,7 +12,7 @@ const Filter = () => {
   const filter = useSelector(selectFilter);
 
   return (
-    <Box as="ul" mx="auto" my={2} px={6} py={4} bg="list" borderRadius="10px">
+    <Box as="ul" mx="auto" my={0} px={6} py={2} bg="list" borderRadius="10px">
       <Title>Find contacts by name</Title>
       <Input
         name="text"

@@ -2,22 +2,23 @@ import { useState, memo } from 'react';
 import { Box } from 'components/Box/Box';
 import { InputLabel, AddBtn, Input } from '../ContactForm/ContactForm.styled';
 import { useDispatch } from 'react-redux';
+import { Title } from 'components/Filter/Filter.styled';
 
-const UserForm = ({onSubmit, btnSubmit}) => {
-const initialForm = {
-  name:"",
-  email: "",
-  password: "",
-}
+const UserForm = ({ onSubmit, btnSubmit }) => {
+  const initialForm = {
+    name: '',
+    email: '',
+    password: '',
+  };
   const [form, setForm] = useState(initialForm);
-const {name, email, password} = form
+  const { name, email, password } = form;
 
   const dispatch = useDispatch();
 
   const handleInputChange = evt => {
     const { name, value } = evt.target;
 
-    setForm((data)=>({...data, [name]: value}))
+    setForm(data => ({ ...data, [name]: value }));
   };
 
   const resetForm = () => {
@@ -26,7 +27,6 @@ const {name, email, password} = form
 
   const handleSubmitForm = evt => {
     evt.preventDefault();
-    console.log(form)
     dispatch(onSubmit(form));
     resetForm();
   };
@@ -37,24 +37,30 @@ const {name, email, password} = form
         display="flex"
         flexDirection="column"
         mx="auto"
-        my={4}
+        my={0}
         px={6}
         py={4}
         bg="list"
         borderRadius="20px"
       >
-        {btnSubmit === 'Register' && <> <InputLabel htmlFor="nameInput">Name</InputLabel>
-        <Input
-          type="text"
-          name="name"
-          id="namelInput"
-          placeholder="Enter Name"
-          value={name}
-          onChange={handleInputChange}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        /></>}
+         <Title>Enter your data</Title>
+        {btnSubmit === 'Register' && (
+          <>
+            {' '}
+            <InputLabel htmlFor="nameInput">Name</InputLabel>
+            <Input
+              type="text"
+              name="name"
+              id="namelInput"
+              placeholder="Enter Name"
+              value={name}
+              onChange={handleInputChange}
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+            />
+          </>
+        )}
         <InputLabel htmlFor="emailInput">Email</InputLabel>
         <Input
           type="email"

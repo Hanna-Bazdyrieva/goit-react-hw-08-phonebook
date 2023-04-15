@@ -19,7 +19,6 @@ const ContactListItem = ({ id, name, number }) => {
       <ItemNumber>{number}</ItemNumber>
       <DeleteBtn
         onClick={e => {
-          console.log(id);
           return dispatch(removeContact(id));
         }}
       >

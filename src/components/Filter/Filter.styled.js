@@ -12,7 +12,7 @@ export const Input = styled.input`
   border: 1px solid rgb(89 81 81);
 `;
 export const Title = styled.h3`
-  padding: ${p => p.theme.space[4]}px 0;
+  padding: ${p => p.theme.space[3]}px 0;
   margin: 0 auto;
 
   font-size: ${p => p.theme.fontSizes.ml};

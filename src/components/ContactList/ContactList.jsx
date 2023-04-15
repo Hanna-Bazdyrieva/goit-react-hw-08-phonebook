@@ -15,7 +15,7 @@ const ContactList = () => {
         <Box
           as="ul"
           mx="auto"
-          my={2}
+          my={0}
           px={6}
           py={4}
           bg="list"

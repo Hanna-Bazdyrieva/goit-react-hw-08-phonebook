@@ -1,11 +1,11 @@
 import { useState, memo } from 'react';
 import { Box } from 'components/Box/Box';
-import { v4 as uuidv4 } from 'uuid';
 import { InputLabel, AddBtn, Input } from './ContactForm.styled';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/contactsOperations';
 import { selectContacts } from 'redux/selectors';
+import { toast } from 'react-toastify';
+import { Title } from 'components/Filter/Filter.styled';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -45,16 +45,24 @@ const ContactForm = () => {
     evt.preventDefault();
     const isName = isNameExists();
     const isNumber = isNumberExists();
+    const notify = (message) => toast.error(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });;
 
     if (isName || isNumber) {
-      alert(
-        `This  ${isName ? `contact ${isName.name}` : ''} ${
-          isNumber ? `number ${isNumber.number}` : ''
-        } already exists`
-      );
+     notify( `This  ${isName ? `contact ${isName.name}` : ''} ${
+      isNumber ? `number ${isNumber.number}` : ''
+    } already exists` )
       return;
     }
-    dispatch(addContact({ name, number, id: uuidv4() }));
+    dispatch(addContact({ name, number }));
     resetForm();
   };
 
@@ -64,12 +72,12 @@ const ContactForm = () => {
         display="flex"
         flexDirection="column"
         mx="auto"
-        my={4}
         px={6}
         py={4}
         bg="list"
         borderRadius="20px"
       >
+        <Title>Enter new contact</Title>
         <InputLabel htmlFor="nameInputId">Name</InputLabel>
         <Input
           type="text"

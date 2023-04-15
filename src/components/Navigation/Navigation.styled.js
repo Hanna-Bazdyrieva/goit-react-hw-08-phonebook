@@ -24,6 +24,8 @@ export const Header = styled.header`
 
 export const Link = styled(NavLink)`
   padding: ${p => p.theme.space[3]}px ${p => p.theme.space[5]}px;
+  margin-left: 20px;
+  margin-right: 20px;
   border-radius: ${p => p.theme.radii.normal};
   text-decoration: none;
   color: ${p => p.theme.colors.black};
@@ -44,6 +46,5 @@ export const Link = styled(NavLink)`
     color: ${p => p.theme.colors.orange};
     background-color: ${p => p.theme.colors.add};
     border-bottom: 2px solid black;
-
   }
 `;

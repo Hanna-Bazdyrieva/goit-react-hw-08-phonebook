@@ -18,7 +18,6 @@ export const registerUserApi = newUser => {
 };
 
 export const loginUserApi = ({ email, password }) => {
-  console.log({ email, password });
   return axios.post('/users/login', { email, password }).then(({ data }) => {
     token.set(data.token);
     return data;

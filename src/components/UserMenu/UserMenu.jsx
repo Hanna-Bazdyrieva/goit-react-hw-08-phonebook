@@ -5,22 +5,17 @@ import { logoutUser } from 'redux/auth/authOperations';
 import { selectorUserEmail } from 'redux/auth/authSelector';
 
 export const UserMenu = () => {
-  const email = useSelector(selectorUserEmail)
-  const dispatch = useDispatch()
+  const email = useSelector(selectorUserEmail);
+  const dispatch = useDispatch();
   return (
-    <Box
-      display="flex"
-      alignItems="center"
-    >
-      <Box
-        display="flex"
-        flexDirection="column"
-        px={3}
-      >
+    <Box display="flex" alignItems="center" mx="20px">
+      <Box display="flex" flexDirection="column" px={3}>
         <Welcome>Welcome</Welcome>
         <Email>{email}</Email>
       </Box>
-      <Button type='button' onClick = {()=>dispatch(logoutUser())}>Logout</Button>
+      <Button type="button" onClick={() => dispatch(logoutUser())}>
+        Logout
+      </Button>
     </Box>
   );
 };
