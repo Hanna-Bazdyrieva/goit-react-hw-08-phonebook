@@ -7,9 +7,9 @@ import {
 } from './authOperations';
 import { toast } from 'react-toastify';
 
-const notify = (message) => toast.error(message, {
+const notifyError = (message) => toast.error(message, {
   position: "top-center",
-  autoClose: 5000,
+  autoClose: 3000,
   hideProgressBar: false,
   closeOnClick: true,
   pauseOnHover: true,
@@ -18,12 +18,24 @@ const notify = (message) => toast.error(message, {
   theme: "colored",
   });
 
+  // const notifyInfo = (message) =>toast.info(message, {
+  //   position: "top-center",
+  //   autoClose: 3000,
+  //   hideProgressBar: false,
+  //   closeOnClick: true,
+  //   pauseOnHover: true,
+  //   draggable: true,
+  //   progress: undefined,
+  //   theme: "colored",
+  //   });
+
 
 const initialState = {
   user: { name: null, email: null },
   token: null,
   isAuth: false,
   isLoading: false,
+  isRefreshingUser: false,
 };
 
 const authSlice = createSlice({
@@ -46,9 +58,17 @@ const authSlice = createSlice({
         state.token = null;
         state.isAuth = false;
       })
+      .addCase(refreshUser.pending, (state) => {
+        state.isRefreshingUser = true;
+      })
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.user = payload;
         state.isAuth = true;
+        state.isRefreshingUser = false;
+
+      })
+       .addCase(refreshUser.rejected, (state) => {
+        state.isRefreshingUser = false;
       })
       .addMatcher(
         action =>
@@ -66,10 +86,10 @@ const authSlice = createSlice({
       )
       .addMatcher(
         action =>
-          action.type.startsWith('auth') && action.type.endsWith('/rejected'),
+          action.type.startsWith('auth') && action.type.endsWith('/rejected')&& !action.type.includes('refresh'),
         (state) => {
           state.isLoading = false;
-          notify('oops... You entered incorrect data');        }
+          notifyError('oops... You entered incorrect data');        }
       );
   },
 });
