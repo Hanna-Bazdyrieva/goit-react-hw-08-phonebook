@@ -8,5 +8,3 @@ const PrivateRoute = ({ component, redirectTo = '/phonebook' }) => {
 };
 
 export default PrivateRoute
-
-  

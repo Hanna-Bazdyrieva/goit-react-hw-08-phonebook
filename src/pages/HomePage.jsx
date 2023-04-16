@@ -10,9 +10,6 @@ export const HomePage = () => {
       display="flex"
       justifyContent="space-between"
       mx="auto"
-      // my={0}
-      // px={5}
-      // py={0}
       bg="list"
       borderRadius="20px"
     >

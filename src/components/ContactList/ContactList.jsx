@@ -16,7 +16,7 @@ const ContactList = () => {
           as="ul"
           mx="auto"
           my={0}
-          px={6}
+          px={7}
           py={4}
           bg="list"
           borderRadius="20px"

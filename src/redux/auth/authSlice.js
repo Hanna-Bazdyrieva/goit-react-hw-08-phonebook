@@ -5,12 +5,24 @@ import {
   refreshUser,
   registerUser,
 } from './authOperations';
+import { toast } from 'react-toastify';
+
+const notify = (message) => toast.error(message, {
+  position: "top-center",
+  autoClose: 5000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "colored",
+  });
+
 
 const initialState = {
   user: { name: null, email: null },
   token: null,
   isAuth: false,
-  error: null,
   isLoading: false,
 };
 
@@ -43,7 +55,6 @@ const authSlice = createSlice({
           action.type.startsWith('auth') && action.type.endsWith('/pending'),
         state => {
           state.isLoading = true;
-          state.error=null;
         }
       )
       .addMatcher(
@@ -51,16 +62,14 @@ const authSlice = createSlice({
           action.type.startsWith('auth') && action.type.endsWith('/fulfilled'),
         state => {
           state.isLoading = false;
-          state.error = null;
         }
       )
       .addMatcher(
         action =>
           action.type.startsWith('auth') && action.type.endsWith('/rejected'),
-        (state, { payload }) => {
+        (state) => {
           state.isLoading = false;
-          state.error = payload;
-        }
+          notify('oops... You entered incorrect data');        }
       );
   },
 });
